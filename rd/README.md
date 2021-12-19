@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# IBS. Счастье рекрутера
+Стажер : Сергеев Максим
+
+Данный проект разработан на стеке:
+- JavaScript
+- React/Redux
+- Material UI
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Идея приложения
 
-In the project directory, you can run:
+Приложение нацелено для помощи в ведении карточек проектов, на
+который в заданный момент требуется подбор людей.\
+Данный сервис помогает повысить качество описания проектов и
+своевременно обеспечеить сотрудников IBS данными необходимыми
+для подбора людей на проекта
 
+## Общее описание приложения
+`HEADER` приложения состоит из:
+- Логотипа компании IBS
+- Названия текущей страницы
+- Дополнительных кнопок (в зависимости от местонахождения)
+
+В приложении 4 страницы :
+
+- `Авторизация` (реализовано только view страницы)
+- `Реестр`
+- `Карточка редактирования проекта`
+- `Карточка описания проекта`
+
+**Реестр**\
+Содержит `Фильтр с настройками` и `Список карточек проектов`\
+
+**Карточка редактирования проекта**\
+Содержит `тулбар` с настройками для карточки и `поля ввода информации о проекте`
+с возможностью их редактирования
+
+**Карточка описания проекта**\
+Содержит аналогичную информацию что и `Карточка редактирования проекта`, 
+без возможности измения полей, а также 2 кнопки `Редактировать` и `Поделиться`
+
+## Описание исходных кодов
+/src/api - содержит axios запросы на сервер `get/post/put/delete`\
+/src/components: `Компоненты`
+- Header - шапка приложения
+- Card - карточка редактирования проекта 
+- CardInfo - карточка описания проекта
+- ListCard - реестр проекта + тулбар с пагинацией
+- Login - страница авторизации пользователя (*реализован только view)
+- Modal - все модальные окна
+\
+
+/src/js: `Скрипты, функции и константы`
+- constants - дефолтные значения и словари
+- functions - вспомогательные функций и обработчики значений
+- parser/serializer - обработчики json данных для принятия и отправки
+на сервер
+- yupSchema - параметра для обработки обязательных полей 
+(на данный момент функция отключена, обязательные поля 
+проверяются на back части приложения)
+\
+
+/src/store: `Redux statemanger`
+- card - экшены на управление состоянием карточки, а также
+карточками внутри реестра
+- regestry - экшена на управление состоянием фильтра, пагинации,
+и сортировки
+
+## Как развернуть проект?
+
+Введите данную команду в консоли node.js, находясь в папке с проектом
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Нажмите `Enter` и подождите пока запустится локальный сервер.\
+[http://localhost:3000](http://localhost:3000)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Страница перезагрузится если её изменить.\
+Так же вы может смотреть Lint ошибки в вашей консоли.\
